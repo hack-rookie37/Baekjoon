@@ -1,5 +1,7 @@
-N, M = map(int, input().split())
-trees = list(map(int, input().split()))
+from sys import stdin
+from array import array
+
+input = stdin.readline
 
 
 def chop(M, trees):
@@ -21,5 +23,8 @@ def chop(M, trees):
             max_H = max(max_H, H)
     return max_H
 
+
+N, M = map(int, input().split())
+trees = array("i", map(int, input().split()))
 
 print(chop(M, trees))
