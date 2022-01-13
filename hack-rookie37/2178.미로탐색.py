@@ -1,13 +1,15 @@
 from collections import deque
+from sys import stdin
+
+input = stdin.readline
 
 N, M = map(int, input().split())
-maze = [list(map(int, input())) for _ in range(N)]
+maze = [list(map(int, input().strip())) for _ in range(N)]
 
 queue = deque([(0, 0, 1)])
 
-# 0: r, 1: d, 2: l, 3: u
-DX = (1, 0, -1, 0)
-DY = (0, 1, 0, -1)
+DX = (1, -1, 0, 0)
+DY = (0, 0, 1, -1)
 
 while queue and maze[N - 1][M - 1] != 0:
     i, j, count = queue.popleft()
