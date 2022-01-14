@@ -17,5 +17,5 @@ for _ in range(int(sys.stdin.readline())):
     else:
         stack_1.append(command[1])
         
-stack_1.extend(reversed(stack_2))
+stack_1.extend(reversed(stack_2)) # 두 스택을 합쳐줌
 print(''.join(stack_1))
