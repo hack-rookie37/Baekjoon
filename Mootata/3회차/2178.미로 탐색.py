@@ -2,7 +2,7 @@ from collections import deque
 
 n, m = map(int, input().split())
 maze = [list(map(int, input())) for _ in range(n)]
-dx, dy = [1, -1, 0, 0], [0, 0, -1, 1] # 상 하 좌 우
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] # 상 하 좌 우
 
 # for i in range(n):
 #     maze.append(list(map(int, input())))
