@@ -32,6 +32,7 @@ def bfs(graph, V, visited):
                 queue.append(i) # 큐에 해당 정점을 넣고
                 visited[i] = True # 방문했다고 표시
 
+print(graph)
 dfs(graph, V, visited)
 print()
 bfs(graph, V, visited)
