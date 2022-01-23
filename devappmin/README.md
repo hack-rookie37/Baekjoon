@@ -79,3 +79,12 @@ int main() {
     priority_queue<Point, vector<Point>, myComparator > custom_pq;
 }
 ```
+
+## LCS
+문자열 크기의 2D Array를 선언한 후, 첫 행은 0으로 삽입.
+```
+만약, 비교하는 위치의 문자가 서로 같으면 
+    현재 위치의 값 = 왼쪽 대각선 값 + 1  (배열 범위를 벗어났으면 0이라고 가정)
+다르다면  
+    현재 위치의 값 = MAX{왼쪽 값, 위쪽 값}    
+```
