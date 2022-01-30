@@ -2,7 +2,7 @@ from heapq import heappush, heappop
 
 v, e = map(int, input().split()) # 정점의 개수, 간선의 개수
 k = int(input()) # 시작 정점
-INF = 11
+INF = float("inf")
 graph = [[] for _ in range(v + 1)]
 weights = [INF for _ in range(v + 1)]
 
