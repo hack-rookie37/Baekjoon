@@ -17,17 +17,21 @@ using namespace std;
 
 void solution(int n, int m, string s) {
     int ans = 0;
-    string ioi = "";
 
-    for (int i = 0; i < n; i++) {
-        ioi += "IO";
-    }
-    ioi += "I";
-
-    string::size_type pos = 0;
-    while ((pos = s.find(ioi, pos)) != string::npos) {
-        ans++;
-        pos += 2;
+    for (int i = 0; i < m; i++) {
+        if (s[i] == 'O')
+            continue;
+        else {
+            int cnt = 0;
+            while (s[i + 1] == 'O' && s[i + 2] == 'I') {
+                cnt++;
+                if (cnt == n) {
+                    cnt--;
+                    ans++;
+                }
+                i += 2;
+            }
+        }
     }
 
     cout << ans;
