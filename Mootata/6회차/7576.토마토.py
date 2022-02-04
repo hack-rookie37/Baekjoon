@@ -1,10 +1,8 @@
-import sys
 from collections import deque
 
 m, n = map(int, input().split()) # 상자의 가로 칸의 수 m, 상자의 세로 칸의 수 n
 storage = [list(map(int, input().split())) for _ in range(n)]
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] # 상 하 좌 우
-answer = sys.maxsize
 queue = deque()
 
 for i in range(n):
