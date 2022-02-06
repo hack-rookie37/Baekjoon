@@ -88,3 +88,24 @@ int main() {
 다르다면  
     현재 위치의 값 = MAX{왼쪽 값, 위쪽 값}    
 ```
+
+## multiset
+
+`multiset`은 `set`과 동일하나 동일한 키 값을 가질 수 있다는 차이를 가지고 있음.
+
+`7662.이중 우선순위 큐.cpp`를 해결하기 위해서 사용했으며 `iterators`인 multiset의 `end()`와 `begin()`을 통해서 첫 값과 마지막 값을 가져올 수 있음.
+
+이 때 주의할 점은 `ms.end()`가 아닌 `--ms.end()`를 통해서 마지막 전 값을 가져와야 하고, 포인터를 통해서 값을 가져와야 함.
+
+또한 중복되는 키가 있을 때 `erase`를 하면 전부 삭제 됨. 이 떄 `ms.lower_bound()`를 사용해서 삭제하면 하나만 삭제 됨.
+
+```c++
+multiset<int> ms;
+
+ms.insert(1);
+ms.insert(1);
+ms.insert(2);
+
+ms.erase(1); // ms는 { 2 }
+ms.erase(ms.lower_bound(1)); // ms는 { 1, 2 }
+```
