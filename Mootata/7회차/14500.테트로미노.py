@@ -1,3 +1,7 @@
+import sys
+
+input = sys.stdin.readline
+
 n, m = map(int, input().split()) # 종이의 세로크기 n, 가로크기 m
 paper = [list(map(int, input().split())) for _ in range(n)]
 
