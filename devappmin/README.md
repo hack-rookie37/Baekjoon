@@ -109,3 +109,16 @@ ms.insert(2);
 ms.erase(1); // ms는 { 2 }
 ms.erase(ms.lower_bound(1)); // ms는 { 1, 2 }
 ```
+
+
+# Python
+
+## Set
+
+### Discard / Remove
+
+```python
+s = set()
+s.remove(1) # 1이 없으면 에러가 남.
+s.discard(1) # 1이 없어도 에러가 안 남.
+```
