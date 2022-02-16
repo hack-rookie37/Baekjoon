@@ -16,7 +16,7 @@ def cut_papers(x, y, n):
                 cut_papers(x, y + n, n)
                 cut_papers(x + n, y, n)
                 cut_papers(x + n, y + n, n)
-                # return
+                return
     if current_color == 0:
         answer[0] += 1
     elif current_color == 1:
