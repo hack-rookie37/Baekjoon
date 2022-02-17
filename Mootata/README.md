@@ -36,3 +36,48 @@ for i in range(n):
 ```
 
 위의 코드처럼 모든 정점을 기준으로 주변을 탐색하는데, 시작지점 (i, j)를 기준으로 인접한 지역을 탐색하므로 한번의 탐색이 끝날 때마다 하나의 구역이 생성된다고 생각하면 됨. 따라서 bfs가 한번 실행 될 때마다 count의 값을 1씩 더해주어 총 몇개의 구역이 생성되는지 구할 수 있음.
+
+## if문 풀어서 쓰기
+
+```python
+if a:
+    print()
+    if b:
+        print()
+        if c:
+            print()
+            if d:
+                print()
+            else:
+                exit(0)
+        else:
+            exit(0)
+    else:
+        exit(0)
+else:
+    exit(0)
+```
+
+이것 보다는
+
+```python
+if !a:
+    exit(0)
+if !b:
+    exit(0)
+if !c:
+    exit(0)
+if d:
+    print()
+```
+
+이게 가독성이 좋음
+
+## list의 슬라이싱
+
+list 슬라이싱은 알고있었지만
+이런 것도 되는줄은 몰랐음
+
+```python
+list(map(int, input().split()))[1:]
+```
