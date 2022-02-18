@@ -23,6 +23,46 @@
 3. 정점 y에서 가장 먼 정점 z를 찾는다.
 ```
 
+## Priority Queue Dijkstra
+
+```python
+def dijkstra(graph, start, fin):
+
+    # 시작점을 제외한 모든 거리를 무한대로 저장
+    dist = {node: float('inf') for node in graph}
+    dist[start] = 0
+
+    q = []
+
+    # heapq로 (거리, 노드)로 입력
+    heappush(q, [dist[start], start])
+
+    while q:
+        c_dist, c_dest = heappop(q)
+
+        if dist[c_dest] < c_dist:
+            continue
+            
+        for n_dest, n_dist in graph[c_dest]:
+            d = c_dist + n_dist
+            if d < dist[n_dest]:
+                dist[n_dest] = d
+                heappush(q, [d, n_dest])
+    
+    return dist[fin]
+```
+
+`dist`에는 start 노드에서 각 노드까지 최단경로가 저장이 되는 곳이다.
+
+여기에는 자기 자신은 0으로 나머지는 전부 무한대로 생각을 하고 값을 저장한다.
+
+그 이후에는 `priority_queue`를 생성하고 (출발 지점까지 거리(0), 출발 지점 노드)를 넣는다.
+
+이후 큐에서 반복하여 값을 빼오면서 `dist[큐에서 뺀 노드]`의 값이 `큐에서 뺀 거리`의 값보다 클 경우에,
+
+해당 지점까지의 최단경로를 찾고 존재하면 dist에 넣어준 뒤 큐에다가 삽입한다.
+
+
 # C++
 
 ## prev_permutation, next_permutation
