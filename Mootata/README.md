@@ -4,9 +4,36 @@
 첫번째 수부터 b번째 수까지 더한 값에서 첫번째 수부터 a - 1번째 수까지 더한 값을 뺴준 것과 같음  
 따라서 리스트에 각 인덱스까지의 누적합을 담아두고, list[b] - list[a - 1] 로 a ~ b까지의 구간 합을 구할 수 있음.
 
+## 다익스트라
+
+다익스트라 알고리즘은 시작 정점에서 각 정점까지의 최단거리를 구하는 알고리즘임
+다익스트라 알고리즘은 deque가 아닌 heapq를 사용하는데 heapq에 넣을 때는 (가중치, 노드 번호) 이런 식으로 가중치를 첫 번째 값으로 넣어줌
+
+```python
+def dijkstra(k):
+    queue = []
+    weights[k] = 0 # 자기 자신으로 가는 값은 0
+    heappush(queue, (0, k)) # 가중치를 첫 번째 값으로, 노드 번호를 두 번째 값으로 넣음
+
+    while queue:
+        weight, node = heappop(queue)
+
+        if weights[node] < weight: # 기존에 계산한 최단거리보다 가중치가 더 높다면 무시
+            continue
+        for w, node in graph[node]:
+            next_w = weight + w
+
+            if next_w < weights[node]: # 기존에 계산한 최단거리보다 가중치가 작다면
+                weights[node] = next_w
+                heappush(queue, (next_w, node))
+```
+
+위의 코드처럼 현재까지 알고 있던 시작 노드에서 각 노드로 가는 최단거리를 계속해서 갱신함
+
 ## 플로이드-워셜
 
-플로이드-워셜 알고리즘은 모든 노드에서 모든 노드까지의 최단거리를 구하는 방법임
+다익스트라 알고리즘이 시작 노드에서 모든 노드까지의 거리를 구하는 알고리즘이라면,
+플로이드-워셜 알고리즘은 모든 노드에서 모든 노드까지의 최단거리를 구하는 알고리즘임
 
 ```python
 for k in range(1, n + 1):
