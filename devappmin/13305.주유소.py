@@ -8,9 +8,7 @@ prices = list(map(int, sys.stdin.readline().split()))
 ans = 0
 minimum = prices[0]
 for idx in range(n - 1):
-    if prices[idx] < minimum:
-        minimum = prices[idx]
-    
+    minimum = min(prices[idx], minimum)
     ans += minimum * dists[idx]
 
 print(ans)
