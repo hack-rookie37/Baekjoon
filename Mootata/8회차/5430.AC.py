@@ -19,10 +19,7 @@ for t in range(int(input())):
 
     for cmd in cmds:
         if cmd == 'R': # reverse는 체크만 함
-            if not is_reverse:
-                is_reverse = True
-            else:
-                is_reverse = False
+            is_reverse = not is_reverse
         else: # D가 입력되었고,
             if not q: # deque가 비어있다면
                 is_error = True
