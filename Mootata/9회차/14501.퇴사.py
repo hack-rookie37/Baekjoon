@@ -18,10 +18,10 @@ def sol2(): # 뒤에서 부터
     dp = [0] * (n + 1)
     for i in range(n - 1, -1, -1):
         t, p = tp[i]
-        if i + t > n: # 퇴사일보다 상담이 오래 걸린다면
+        if i + t - 1> n: # 퇴사일보다 상담이 오래 걸린다면
             dp[i] = dp[i + 1] # 다음날의 임금을 그대로 가져옴
         else: # 상담을 할 수 있다면
-            dp[i] = max(dp[i + 1], p + dp[i + t]) # 다음날의 임금과 (오늘 임금 + t일 이후의 임금) 중 큰것을 저장
-    print(dp[0])
+            dp[i] = max(dp[i + 1], p + dp[i + t - 1]) # 다음날의 임금과 (오늘 임금 + t일 이후의 임금) 중 큰것을 저장
+    print(max(dp))
 
-sol1()
+sol2()
