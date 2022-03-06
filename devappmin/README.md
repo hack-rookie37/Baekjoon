@@ -62,6 +62,24 @@ def dijkstra(graph, start, fin):
 
 해당 지점까지의 최단경로를 찾고 존재하면 dist에 넣어준 뒤 큐에다가 삽입한다.
 
+## Bellman-Ford
+
+```python
+def bellman_ford(world, dist, start, n):
+    dist[start] = 0
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            for next_node, weight in world[j]:
+                if dist[next_node] > dist[j] + weight:
+                    dist[next_node] = dist[j] + weight
+                    if i == n:
+                        return True
+    return False
+```
+
+`graph`와 `dist`을 구하는 방식은 다익스트라와 동일.
+
+하지만 전체를 돌면서 체크를 하는 부분이 다르다.
 
 # C++
 
