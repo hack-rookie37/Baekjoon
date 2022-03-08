@@ -6,10 +6,6 @@ n = int(input()) # 미로의 길이 N
 maze = list(map(int, input().split()))
 dp = [0] + [1001] * (n - 1)
 
-if maze[0] == 0:
-    print(-1)
-    exit(0)
-
 for i in range(n):
     for j in range(1, maze[i] + 1):
         if i + j >= n:
