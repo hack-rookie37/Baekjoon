@@ -7,7 +7,7 @@ dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] # 상 하 좌 우
 
 r, c = map(int, input().split()) # r행 c열
 forest = [list(input().rstrip()) for _ in range(r)]
-visited = [[False for _ in range(c)] for _ in range(r)]
+visited = [[0 for _ in range(c)] for _ in range(r)]
 q = deque()
 
 for i in range(r): # 고슴도치, 물의 위치 큐에 넣어주고, 비버 굴의 위치 파악
