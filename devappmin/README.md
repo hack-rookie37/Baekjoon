@@ -1,16 +1,52 @@
 # Tips
 
 ## LCS
+
 문자열 크기의 2D Array를 선언한 후, 첫 행은 0으로 삽입.
+
 ```
-만약, 비교하는 위치의 문자가 서로 같으면 
+만약, 비교하는 위치의 문자가 서로 같으면
     현재 위치의 값 = 왼쪽 대각선 값 + 1  (배열 범위를 벗어났으면 0이라고 가정)
-다르다면  
-    현재 위치의 값 = MAX{왼쪽 값, 위쪽 값}    
+다르다면
+    현재 위치의 값 = MAX{왼쪽 값, 위쪽 값}
 ```
 
+## LIS
+
+LIS는 가장 긴 증가하는 부분 수열 길이를 구하는 방법이다.
+
+주어진 값은 대부분 숫자로 이루어진 배열이고 해당 배열 내에서 증가하는 수열 중 가장 큰 수열의 길이를 구하는 문제이다.
+
+### Case 1
+
+```python
+dp = [1] * n
+
+for i in range(1, n):
+    for j in range(i):
+        if nums[j] < nums[i]:
+            dp[j] = max(dp[i], dp[j] + 1)
+
+print(max(dp))
+```
+
+### Case 2
+
+```python
+for i in range(1, n):
+    for j in range(i):
+        if nums[j] < nums[i] and dp[j] + 1 > dp[i]:
+            dp[i] = dp[j] + 1
+
+print(max(dp))
+```
+
+> 중가하는 가장 큰 수열의 길이를 구하는 것이지, 모든 수열의 경우를 출력하는 것이 아님을 유의하자.
+
 ## 트리의 지름 구하기
+
 트리의 지름을 구하기 위해서는 무작위 정점을 하나 고르고 그 정점에서 가장 먼 정점을 구한 뒤에 그 정점과 그 정점에서 가장 먼 정점의 거리를 구하면 된다.
+
 ```
 1. 임의의 정점으로 부터 가장 먼 정점을 구한다.
 2. 1에서 나온 정점으로 부터 가장 먼 정점을 구한다.
@@ -42,13 +78,13 @@ def dijkstra(graph, start, fin):
 
         if dist[c_dest] < c_dist:
             continue
-            
+
         for n_dest, n_dist in graph[c_dest]:
             d = c_dist + n_dist
             if d < dist[n_dest]:
                 dist[n_dest] = d
                 heappush(q, [d, n_dest])
-    
+
     return dist[fin]
 ```
 
@@ -163,7 +199,6 @@ int main() {
 }
 ```
 
-
 ## multiset
 
 `multiset`은 `set`과 동일하나 동일한 키 값을 가질 수 있다는 차이를 가지고 있음.
@@ -184,7 +219,6 @@ ms.insert(2);
 ms.erase(1); // ms는 { 2 }
 ms.erase(ms.lower_bound(1)); // ms는 { 1, 2 }
 ```
-
 
 # Python
 
