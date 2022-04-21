@@ -23,7 +23,8 @@ for bracket in brackets:
         if last_bracket == '(': # 직전의 괄호가 ( 일때
             answer += temp
         stack.pop()
-        temp //= 2
+        temp //= 2 # (()[]) 이런 경우 2(2 + 3) 이기 때문에 answer에 더해주고 한번 나눠줌
+                   # answer = 2 x 2 , answer = 2 x 2 // 2 x 3
     else:
         if not stack or stack[-1] == '(':
             answer = 0
