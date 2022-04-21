@@ -1,0 +1,1 @@
+a,b=int(input()),list(map(int,list(input())));print(*[a*b[x]for x in(2,1,0)],a*int(''.join(map(str,b))),sep="\n")
