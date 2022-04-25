@@ -18,11 +18,9 @@ for string, flat in melody:
         count += 1
         
     elif stacks[string][-1] > flat:
-        while stacks[string][-1] > flat:
+        while stacks[string] and stacks[string][-1] > flat:
             stacks[string].pop()
             count += 1
-            if not stacks[string]:
-                break
         if stacks[string]:
             if stacks[string][-1] != flat:
                 stacks[string].append(flat)
