@@ -8,14 +8,14 @@ n, k = map(int, input().split()) # N x N 크기의 시험관, k 종류의 바이
 test_info = [list(map(int, input().split())) for _ in range(n)]
 s, x, y = map(int, input().split()) # S초 뒤에 (X, Y)에 존재하는 바이러스의 종류
 visited = [[False for _ in range(n)] for _ in range(n)]
-q1, q2 = deque(), deque()
+q1, q2 = deque(), deque() # q1 현재 이동할 부분, q2 다음 사이클에 이동할 부분
 
 for i in range(n):
     for j in range(n):
         if test_info[i][j] != 0:
             q1.append((test_info[i][j], i, j))
 
-q1 = deque(sorted(q1))
+q1 = deque(sorted(q1)) # 번호가 낮은 바이러스부터 이동
 
 def bfs():
     while q1:
