@@ -21,10 +21,10 @@ def bfs():
         node = q.popleft()
         
         visited[node] = True
-        for i in tree[node][:]: # 각 노드의 자식 노드
-            if not visited[i]: 
-                q.append(i)
-                answer[i] = node
+        for i in tree[node][:]: # node의 자식 노드
+            if not visited[i]: # 해당 노드에 방문한 적이 없다면
+                q.append(i) # 큐에 넣고
+                answer[i] = node # 부모 노드 입력
     return answer[2:]
 
 print(*bfs(), sep='\n')
