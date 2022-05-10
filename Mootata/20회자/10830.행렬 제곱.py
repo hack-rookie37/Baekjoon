@@ -17,19 +17,24 @@ def divide(b, matrix): # 분할 정복
         for i in range(n):
             for j in range(n):
                 matrix[i][j] %= 1000
-        print(b)
         return matrix
     else: 
         if b % 2 == 0: # A^4 = A^2 * A^2
             temp = divide(b // 2, matrix)
-            print(b)
             return multiply(temp, temp)
         else: # A^5 = A^2 * A^2 * A^1
             temp = divide(b - 1, matrix)
-            print(b)
-            return multiply(matrix, temp)
+            return multiply(matrix, temp) # matrix = A^1
 
 answer = divide(b, matrix)
 
 for i in answer:
     print(*i)
+
+
+# b = 5 일때,
+# A^5 = A^4 * A^1,
+# A^4 = A^2 * A^2,
+# A^2 = A * A 이므로
+# 재귀를 통해 A * A 까지 내려가서 A^2을 구하고,
+# 다시 차례대로 올라가면서 A^4, A^5까지 구함
