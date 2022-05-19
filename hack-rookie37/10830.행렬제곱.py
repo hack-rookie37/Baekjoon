@@ -1,3 +1,6 @@
+# for edit commit
+
+
 def product(N, m1, m2):
     result = [[0] * N for _ in range(N)]
 
