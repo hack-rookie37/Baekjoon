@@ -10,7 +10,7 @@ for idx in range(2, d):
 
 
 def solution():
-    i, j = 0, 0
+    i, j = 1, 1
     while True:
         j = 0
         while True:
