@@ -35,9 +35,9 @@ def bfs():
                         flag = False
                     if (nx, ny) in per: # 장애물을 만나면 탐색 중지
                         break
-        if flag:
+        if flag: # 한번도 학생과 마주치지 않았다면 성공
             return 'YES'
-    return 'NO'
+    return 'NO' # 장애물을 놓는 모든 경우의 수를 탐색했지만 실패한 경우
 
 print(bfs())
 
