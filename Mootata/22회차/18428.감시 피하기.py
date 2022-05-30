@@ -1,5 +1,5 @@
 from collections import deque
-from itertools import permutations
+from itertools import combinations
 
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] # 상 하 좌 우
 
@@ -15,7 +15,7 @@ for i in range(n):
         elif corr[i][j] == 'T':
             teacher.append((i, j))
 
-permu = list(permutations(temp, 3)) # 비어있는 공간들 중 3곳을 뽑아 장애물 배치
+permu = list(combinations(temp, 3)) # 비어있는 공간들 중 3곳을 뽑아 장애물 배치
 
 def bfs():
     for per in permu:
