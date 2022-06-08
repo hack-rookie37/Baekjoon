@@ -1,2 +1,12 @@
-P, K = map(int, input().split())
-a = Truefor i in range(2,K):    if P % i == 0:        print('BAD', i)        a = False        breakif a:    print('GOOD')
+p, k = map(int, input().split())
+bad = k
+
+for i in range(2, k):
+    if p % i == 0: # BAD 케이스
+        if bad > i:
+            bad = i
+
+if bad != k:
+    print('BAD', bad)
+else:
+    print('GOOD')
