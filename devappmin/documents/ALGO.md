@@ -136,3 +136,94 @@ for k in range(1, n + 1):
             graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
 
 ```
+
+## Minimum Spanning Tree (Kruskal)
+`union-find`을 활용하여 최단 거리를 탐색할 수 있다.
+
+> 관련 문제: 1922
+
+```python
+import sys
+
+n = int(sys.stdin.readline()) # 노드의 개수
+m = int(sys.stdin.readline()) # 간선의 수
+
+parent = [x for x in range(n + 1)] # 루트 노드 정보를 저장하기 위한 배열
+rank = [0] * (n + 1) # 정점의 rank를 저장하기 위한 배열
+edges = [[] for _ in range(m + 1)] # 간선 정보를 저장하기 위한 배열
+
+# edge 배열(간선 정보)에 (간선 비용, 출발 노드, 도착 노드)로 값을 저장한다.
+for idx in range(1, m + 1):
+    a, b, c = map(int, sys.stdin.readline().split())
+    edges[idx].extend([c, a, b])
+
+# Union-find 알고리즘
+
+# find 알고리즘
+def find(a):
+    if parent[a] == a:
+        return a
+
+    # 루트 노드를 찾고 루트 노드의 정보를 갱신
+    p = find(parent[a])
+    parent[a] = p
+    return parent[a]
+
+# union 알고리즘
+def union(a, b):
+    # 두 노드의 루트 노드를 탐색
+    a = find(a)
+    b = find(b)
+
+    # 루트 노드가 같으면 이어져 있는 것이므로 알고리즘을 더 이상 실행하지 않음
+    if a == b:
+        return
+
+    # a의 루트 노드의 rank가 높으면 a에 b를 병합
+    if rank[a] > rank[b]:
+        parent[b] = a
+        return
+
+    # b의 루트 노드의 rank가 높거나 둘이 rank가 같으면 b에 a를 병합
+    parent[a] = b
+
+    # 두 노드의 rank가 같으면 b의 rank를 1 올림
+    if rank[a] == rank[b]:
+        rank[b] += 1
+
+# 크루스칼 알고리즘
+def kruskal(edges):
+    # edge 정보를 비용, from, to 순서대로 정렬
+    edges = sorted(edges)
+
+    # 총 비용
+    total = 0
+
+    # mst의 edge가 저장될 배열
+    minimum_spanning_tree = []
+
+    # 모든 edge 정보를 탐색하며
+    for edge in edges:
+        # 그 edge가 비어있으면 다음으로 넘어간다
+        if not edge:
+            continue
+
+        cost, fr, to = edge
+
+        # 두 노드의 부모가 같지 않으면
+        if find(fr) != find(to):
+            # 두 노드를 연결한다.
+            union(fr, to)
+
+            # 또한 총 비용을 cost만큼 추가하고
+            total += cost
+
+            # edge 정보 배열에 정보를 추가한다
+            minimum_spanning_tree.append((fr, to))
+    
+    # 그 값을 리턴
+    return total, minimum_spanning_tree
+
+total, minimum_spanning_tree = kruskal(edges)
+print(total)
+```
