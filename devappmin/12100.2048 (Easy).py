@@ -18,10 +18,12 @@ def move(graph, pos):
     new_graph = [row[:] for row in graph]
 
 
-    if pos == 0:
+    if pos == 0 or pos == 2:
         for y in range(n):
-            top = n - 1
-            for x in range(n - 2, -1, -1):
+            top = n - 1 if pos == 0 else 0
+            m = (n - 2, -1, -1) if pos == 0 else (1, n)
+
+            for x in range(*m):
                 if not new_graph[y][x]:
                     continue
 
@@ -34,40 +36,18 @@ def move(graph, pos):
 
                 if new_graph[y][top] == temp:
                     new_graph[y][top] = temp * 2
-                    top -= 1
+                    top += -1 if pos == 0 else 1
                     continue
 
-                top -= 1
+                top += -1 if pos == 0 else 1
                 new_graph[y][top] = temp
 
-
-    if pos == 2:
-        for y in range(n):
-            top = 0
-            for x in range(1, n):
-                if not new_graph[y][x]:
-                    continue
-                
-                temp = new_graph[y][x]
-                new_graph[y][x] = 0
-
-                if new_graph[y][top] == 0:
-                    new_graph[y][top] = temp
-                    continue
-
-                if new_graph[y][top] == temp:
-                    new_graph[y][top] = temp * 2
-                    top += 1
-                    continue
-
-                top += 1
-                new_graph[y][top] = temp
-
-
-    if pos == 1:
+    if pos == 1 or pos == 3:
         for x in range(n):
-            top = n - 1
-            for y in range(n - 2, -1, -1):
+            top = n - 1 if pos == 1 else 0
+            m = (n - 2, -1, -1) if pos == 1 else (1, n)
+
+            for y in range(*m):
                 if not new_graph[y][x]:
                     continue
 
@@ -80,32 +60,10 @@ def move(graph, pos):
 
                 if new_graph[top][x] == temp:
                     new_graph[top][x] = temp * 2
-                    top -= 1
+                    top += -1 if pos == 1 else 1
                     continue
 
-                top -= 1
-                new_graph[top][x] = temp
-
-    if pos == 3:
-        for x in range(n):
-            top = 0
-            for y in range(1, n):
-                if not new_graph[y][x]:
-                    continue
-
-                temp = new_graph[y][x]
-                new_graph[y][x] = 0
-
-                if new_graph[top][x] == 0:
-                    new_graph[top][x] = temp
-                    continue
-
-                if new_graph[top][x] == temp:
-                    new_graph[top][x] = temp * 2
-                    top += 1
-                    continue
-
-                top += 1
+                top += -1 if pos == 1 else 1
                 new_graph[top][x] = temp
 
     return new_graph
