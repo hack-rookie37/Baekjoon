@@ -138,6 +138,7 @@ for k in range(1, n + 1):
 ```
 
 ## Minimum Spanning Tree (Kruskal)
+
 `union-find`을 활용하여 최단 거리를 탐색할 수 있다.
 
 > 관련 문제: 1922
@@ -227,3 +228,9 @@ def kruskal(edges):
 total, minimum_spanning_tree = kruskal(edges)
 print(total)
 ```
+
+## 다각형의 면적 구하기
+
+다각형의 면적은 일명 [`신발끈 정리`](https://ko.wikihow.com/%EB%8B%A4%EA%B0%81%ED%98%95-%EB%84%93%EC%9D%B4-%EA%B5%AC%ED%95%98%EA%B8%B)를 활용하면 된다.
+
+> 관련 문제: 2166
