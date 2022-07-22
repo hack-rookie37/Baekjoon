@@ -12,5 +12,4 @@ for i in coins:
         if j - i >= 0:
             dp[j] = min(dp[j - i] + 1, dp[j])
 
-
 print(dp[-1] if dp[-1] != float("inf") else -1)
