@@ -5,7 +5,7 @@ Q = 1000000007
 
 
 def modular(a, b):
-    return a * inverse(b, Q - 2) % Q
+    return (a % Q) * inverse(b, Q - 2) % Q
 
 
 def inverse(n, exp):
