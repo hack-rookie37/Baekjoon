@@ -1,7 +1,7 @@
 n = int(input())
 m = 1000000007
 
-def mul(mat1, mat2):
+def mul(mat1, mat2): # 행렬 곱셈
     answer = []
     
     for i in range(len(mat1)):
@@ -13,7 +13,7 @@ def mul(mat1, mat2):
             answer[i].append(temp % m)
     return answer
 
-def power(mat, p):
+def power(mat, p): # 행렬 거듭제곱
     if p == 1:
         return mat
     else:
