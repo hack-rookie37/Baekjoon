@@ -138,6 +138,7 @@ for k in range(1, n + 1):
 ```
 
 ## Minimum Spanning Tree (Kruskal)
+
 `union-find`을 활용하여 최단 거리를 탐색할 수 있다.
 
 > 관련 문제: 1922
@@ -227,3 +228,19 @@ def kruskal(edges):
 total, minimum_spanning_tree = kruskal(edges)
 print(total)
 ```
+
+## 다각형의 면적 구하기
+
+다각형의 면적은 일명 [`신발끈 정리`](https://ko.wikihow.com/%EB%8B%A4%EA%B0%81%ED%98%95-%EB%84%93%EC%9D%B4-%EA%B5%AC%ED%95%98%EA%B8%B)를 활용하면 된다.
+
+> 관련 문제: 2166
+
+## 분할 정복을 통한 피보나치 수열 구하기
+
+![fiboimg](https://ataraxiady.github.io/assets/img/dev/boj/11444.png)
+
+큰 피보나치 수열을 구하기 위해서는 행렬의 거듭 제곱을 활용해야 한다.
+
+수학적 행렬으로 표현하면 위 이미지와 같고, 이를 **n**승 해주는 `power` 함수와 행렬을 곱해주는 `multiply` 함수를 만들어야 한다.
+
+> 관련 문제: 11444
